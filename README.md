@@ -1,5 +1,5 @@
 # CollectCompanyInfoFromRecruitNavi
-This is a UiPath program designed to help sales person with making a list of companies to do sales activity such as phone call or visit. The code structure is easy to understand and maintain. Please feel free to download it and modify it to suit your need. *It generates list of companies out of Recruit Navi website.
+This is a UiPath program designed to help sales person with making a list of companies to do sales activity such as phone call or visit. The code structure is easy to understand and maintain. Please feel free to download it and modify it to suit your need. *It generates list of companies out of Recruit Navi website and attach it on an email and send to the designated email address.
 
 Tip1 : If you publish it to UiPath orchestrator, you can type into "search word" and "search area" as argument.
 
