@@ -1,8 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_userMailAddress="nkmr104@outlook.com" this:Main.in_str_keyword="不動産" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uセ行="clr-namespace:UiPathTeam_Excel_Activities.セル.行列;assembly=UiPathTeam.Excel.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_userMailAddress="nkmr104@outlook.com" this:Main.in_str_keyword="不動産" this:Main.in_str_searchArea="群馬" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uセ行="clr-namespace:UiPathTeam_Excel_Activities.セル.行列;assembly=UiPathTeam.Excel.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_str_userMailAddress" Type="InArgument(x:String)" />
     <x:Property Name="in_str_keyword" Type="InArgument(x:String)" />
     <x:Property Name="in_str_searchArea" Type="InArgument(x:String)" />
+    <x:Property Name="in_int_maxNumberOfCompanies" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -10,7 +11,7 @@
   <sap:VirtualizedContainerService.HintSize>668,998</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="82">
+    <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -56,7 +57,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,6 +95,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPathTeam.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap:VirtualizedContainerService.HintSize="676.666666666667,933.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -216,7 +218,7 @@
                     <av:PointCollection x:Key="ConnectorLocation">300,454.666666666666 300,485.333333333333</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Extract list of companies' info" sap:VirtualizedContainerService.HintSize="908,1981.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Extract list of companies' info" sap:VirtualizedContainerService.HintSize="678,2640" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_ListOfCompanies" />
                   </Sequence.Variables>
@@ -226,22 +228,23 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="On Riku Navi search result page" sap:VirtualizedContainerService.HintSize="866,1889.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="a3b31e1ef202cf9ce35a18a49d1b24a0" Selector="&lt;html app='chrome.exe' title='【*】を含む求人・転職情報｜【リクナビNEXT】で転職！' /&gt;">
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="On Riku Navi search result page" sap:VirtualizedContainerService.HintSize="636,2548" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="a3b31e1ef202cf9ce35a18a49d1b24a0" Selector="&lt;html app='chrome.exe' title='【*】を含む求人・転職情報｜【リクナビNEXT】で転職！' /&gt;">
                     <ui:BrowserScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="832,1743.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="602,2402" sap2010:WorkflowViewState.IdRef="Sequence_4">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:Int32" Name="int_IndexOfCompanyList" />
+                            <Variable x:TypeArguments="x:Int32" Name="int_currentIndex" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[dt_ListOfCompanies]" DisplayName="Extract Structured Data 'BODY'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='PageTitle' attr='text' name2='AccessURL' attr2='href'&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='ul' idx='1' /&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h2' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="790,106" sap2010:WorkflowViewState.IdRef="ExtractData_6" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl tag='A' class='rnn-inlineBlock rnn-pagination__button' parentclass='rnn-pagination__next' idx='1' /&gt;" SimulateClick="True">
+                          <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[dt_ListOfCompanies]" DisplayName="Extract Structured Data 'BODY'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='PageTitle' attr='text' name2='AccessURL' attr2='href'&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='ul' idx='1' /&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h2' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="560,106" sap2010:WorkflowViewState.IdRef="ExtractData_6" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl tag='A' class='rnn-inlineBlock rnn-pagination__button' parentclass='rnn-pagination__next' idx='1' /&gt;" SimulateClick="True">
                             <ui:ExtractData.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="29fd6718-08ae-4a8a-acf3-7b112ab58b1c" InformativeScreenshot="2c6e3b9d8d70d3ed906a860936673fc2" Selector="&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE">
                                 <ui:Target.TimeoutMS>
@@ -250,7 +253,7 @@
                               </ui:Target>
                             </ui:ExtractData.Target>
                           </ui:ExtractData>
-                          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Open template file" sap:VirtualizedContainerService.HintSize="790,259.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="01.Config\05.Template.xlsx">
+                          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Open template file" sap:VirtualizedContainerService.HintSize="560,259.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="01.Config\05.Template.xlsx">
                             <ui:ExcelApplicationScope.Body>
                               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                 <ActivityAction.Argument>
@@ -273,7 +276,7 @@
                               </ActivityAction>
                             </ui:ExcelApplicationScope.Body>
                           </ui:ExcelApplicationScope>
-                          <Assign DisplayName="Initialize Index of Company datatable" sap:VirtualizedContainerService.HintSize="790,62" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign DisplayName="Initialize Index of Company datatable" sap:VirtualizedContainerService.HintSize="560,62" sap2010:WorkflowViewState.IdRef="Assign_8">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[int_IndexOfCompanyList]</OutArgument>
                             </Assign.To>
@@ -281,13 +284,14 @@
                               <InArgument x:TypeArguments="x:Int32">0</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ListOfCompanies]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="790,1042" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                          <ui:LogMessage DisplayName="Log the number of search result" sap:VirtualizedContainerService.HintSize="560,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The number of search results is &quot; + dt_ListOfCompanies.Rows.Count.ToString]" />
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ListOfCompanies]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,1566" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="756,921.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1445.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="x:String" Name="CompanyName" />
                                     <Variable x:TypeArguments="x:Int32" Name="int_startIndex" />
@@ -298,64 +302,112 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[dt_ListOfCompanyInfo]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="714,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                                  <ui:NavigateTo Browser="[Brs_RikuNaviURL]" DisplayName="Navigate To each company's page" sap:VirtualizedContainerService.HintSize="714,58.6666666666667" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[str_URLForRecruitNaviNext + CurrentRow(&quot;AccessURL&quot;).ToString]" />
-                                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on Job Information" sap:VirtualizedContainerService.HintSize="714,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                    <ui:Click.CursorPosition>
-                                      <ui:CursorPosition Position="Center">
-                                        <ui:CursorPosition.OffsetX>
-                                          <InArgument x:TypeArguments="x:Int32" />
-                                        </ui:CursorPosition.OffsetX>
-                                        <ui:CursorPosition.OffsetY>
-                                          <InArgument x:TypeArguments="x:Int32" />
-                                        </ui:CursorPosition.OffsetY>
-                                      </ui:CursorPosition>
-                                    </ui:Click.CursorPosition>
-                                    <ui:Click.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d69fcdae-f9c3-4ffb-9e07-e78974651f6c" InformativeScreenshot="93631336bdd0059eb187bbff4c631a71" Selector="&lt;webctrl aaname='求人情報' tag='SPAN' parentclass='rn*' idx='1' /&gt;">
-                                        <ui:Target.TimeoutMS>
-                                          <InArgument x:TypeArguments="x:Int32" />
-                                        </ui:Target.TimeoutMS>
-                                        <ui:Target.WaitForReady>
-                                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                                        </ui:Target.WaitForReady>
-                                      </ui:Target>
-                                    </ui:Click.Target>
-                                  </ui:Click>
-                                  <ui:UiElementExists DisplayName="Element Exists Recruit Agent" Exists="[ElementExists]" sap:VirtualizedContainerService.HintSize="714,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-                                    <ui:UiElementExists.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7c35154f-b64c-47ee-8fff-fe74518c38a9" InformativeScreenshot="e39d7d73d3f8d5bb550e93bd52ede721" Selector="&lt;webctrl aaname='リクルートエージェントからの求人' tag='DIV' /&gt;" TimeoutMS="1000">
-                                        <ui:Target.WaitForReady>
-                                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                                        </ui:Target.WaitForReady>
-                                      </ui:Target>
-                                    </ui:UiElementExists.Target>
-                                  </ui:UiElementExists>
-                                  <If Condition="[ElementExists]" DisplayName="if the ad is from Recruit Agent" sap:VirtualizedContainerService.HintSize="714,274.666666666667" sap2010:WorkflowViewState.IdRef="If_4">
-                                    <If.Then>
-                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetIndividualCompanyDetails workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="GetIndividualCompanyDetails(2).xaml">
-                                        <ui:InvokeWorkflowFile.Arguments>
-                                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_ListOfCompanyInfo">[dt_ListOfCompanyInfo]</InOutArgument>
-                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_int_IndexOfCompanyList">[int_IndexOfCompanyList]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_str_URLForRecruitNaviNext">[str_URLForRecruitNaviNext]</InArgument>
-                                          <InArgument x:TypeArguments="ui:Browser" x:Key="in_brs_RikuNavi">[Brs_RikuNaviURL]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_str_ProcessInstructionStructuredFilePath">01.Config\04.ProcessInstruction_Structured.xlsx</InArgument>
-                                        </ui:InvokeWorkflowFile.Arguments>
-                                      </ui:InvokeWorkflowFile>
-                                    </If.Then>
-                                    <If.Else>
-                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetIndividualCompanyDetails workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="GetIndividualCompanyDetails(1).xaml">
-                                        <ui:InvokeWorkflowFile.Arguments>
-                                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_ListOfCompanyInfo">[dt_ListOfCompanyInfo]</InOutArgument>
-                                          <InArgument x:TypeArguments="x:Int32" x:Key="in_int_IndexOfCompanyList">[int_IndexOfCompanyList]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_str_ProcessInstructionFilePath">01.Config\03.ProcessInstruction_Unstructured.xlsx</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_str_URLForRecruitNaviNext">[str_URLForRecruitNaviNext]</InArgument>
-                                          <InArgument x:TypeArguments="ui:Browser" x:Key="in_brs_RikuNavi">[Brs_RikuNaviURL]</InArgument>
-                                        </ui:InvokeWorkflowFile.Arguments>
-                                      </ui:InvokeWorkflowFile>
-                                    </If.Else>
-                                  </If>
-                                  <Assign DisplayName="Increment Index of Company datatable" sap:VirtualizedContainerService.HintSize="714,62" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                  <ui:LogMessage DisplayName="Log the current index number" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;The current company index is &quot; + (int_IndexOfCompanyList + 1).ToString + &quot; out of &quot; + dt_ListOfCompanies.Rows.Count.ToString]" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[dt_ListOfCompanyInfo]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                                  <ui:NavigateTo Browser="[Brs_RikuNaviURL]" DisplayName="Navigate To each company's page" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[str_URLForRecruitNaviNext + CurrentRow(&quot;AccessURL&quot;).ToString]" />
+                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="484,674.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <TryCatch.Try>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="376,436.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on Job Information" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition Position="Center">
+                                              <ui:CursorPosition.OffsetX>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetX>
+                                              <ui:CursorPosition.OffsetY>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetY>
+                                            </ui:CursorPosition>
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d69fcdae-f9c3-4ffb-9e07-e78974651f6c" InformativeScreenshot="93631336bdd0059eb187bbff4c631a71" Selector="&lt;webctrl aaname='求人情報' tag='SPAN' parentclass='rn*' idx='1' /&gt;">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                        <ui:UiElementExists DisplayName="Element Exists Recruit Agent" Exists="[ElementExists]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                                          <ui:UiElementExists.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7c35154f-b64c-47ee-8fff-fe74518c38a9" InformativeScreenshot="e39d7d73d3f8d5bb550e93bd52ede721" Selector="&lt;webctrl aaname='リクルートエージェントからの求人' tag='DIV' /&gt;" TimeoutMS="1000">
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:UiElementExists.Target>
+                                        </ui:UiElementExists>
+                                        <If Condition="[ElementExists]" DisplayName="if the ad is from Recruit Agent" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_4">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetIndividualCompanyDetails workflow" sap:VirtualizedContainerService.HintSize="334,113.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="GetIndividualCompanyDetails(2).xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_ListOfCompanyInfo">[dt_ListOfCompanyInfo]</InOutArgument>
+                                                <InArgument x:TypeArguments="x:Int32" x:Key="in_int_IndexOfCompanyList">[int_IndexOfCompanyList]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_str_URLForRecruitNaviNext">[str_URLForRecruitNaviNext]</InArgument>
+                                                <InArgument x:TypeArguments="ui:Browser" x:Key="in_brs_RikuNavi">[Brs_RikuNaviURL]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_str_ProcessInstructionStructuredFilePath">01.Config\04.ProcessInstruction_Structured.xlsx</InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                          </If.Then>
+                                          <If.Else>
+                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetIndividualCompanyDetails workflow" sap:VirtualizedContainerService.HintSize="334,113.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="GetIndividualCompanyDetails(1).xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_ListOfCompanyInfo">[dt_ListOfCompanyInfo]</InOutArgument>
+                                                <InArgument x:TypeArguments="x:Int32" x:Key="in_int_IndexOfCompanyList">[int_IndexOfCompanyList]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_str_ProcessInstructionFilePath">01.Config\03.ProcessInstruction_Unstructured.xlsx</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_str_URLForRecruitNaviNext">[str_URLForRecruitNaviNext]</InArgument>
+                                                <InArgument x:TypeArguments="ui:Browser" x:Key="in_brs_RikuNavi">[Brs_RikuNaviURL]</InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                          </If.Else>
+                                        </If>
+                                      </Sequence>
+                                    </TryCatch.Try>
+                                    <TryCatch.Catches>
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ActivityAction x:TypeArguments="s:Exception">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                          </ActivityAction.Argument>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="376,321.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log unsuccessful job" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;The getting information from the company at index number &quot; + (int_IndexOfCompanyList + 1).ToString + &quot; was not successful.&quot;]" />
+                                            <ui:LogMessage DisplayName="Log error message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[exception.Message]" />
+                                          </Sequence>
+                                        </ActivityAction>
+                                      </Catch>
+                                    </TryCatch.Catches>
+                                  </TryCatch>
+                                  <Assign DisplayName="Increment Index of Company datatable" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_9">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Int32">[int_IndexOfCompanyList]</OutArgument>
                                     </Assign.To>
@@ -363,6 +415,11 @@
                                       <InArgument x:TypeArguments="x:Int32">[int_IndexOfCompanyList + 1]</InArgument>
                                     </Assign.Value>
                                   </Assign>
+                                  <If Condition="[int_IndexOfCompanyList &gt; in_int_maxNumberOfCompanies]" DisplayName="If index exceeds max number of companies" sap:VirtualizedContainerService.HintSize="484,241.333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+                                    <If.Then>
+                                      <ui:Break sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                    </If.Then>
+                                  </If>
                                 </Sequence>
                               </ActivityAction>
                             </ui:ForEachRow.Body>
@@ -373,7 +430,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:ForEachRow>
-                          <ui:RemoveDuplicateRows DataTable="[dt_ListOfCompanyInfo]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="790,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[dt_ListOfCompanyInfo]" />
+                          <ui:RemoveDuplicateRows DataTable="[dt_ListOfCompanyInfo]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="560,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[dt_ListOfCompanyInfo]" />
                         </Sequence>
                       </ActivityAction>
                     </ui:BrowserScope.Body>
