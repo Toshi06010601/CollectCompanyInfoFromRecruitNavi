@@ -1,5 +1,5 @@
 {
-  "name": "GetCompanyDetailsFromPRTimes",
+  "name": "GetCompanyDetailsFromRecruitNavi",
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
@@ -14,7 +14,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.2.0.0",
-  "projectVersion": "1.0.8",
+  "projectVersion": "1.0.9",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -26,7 +26,8 @@
     ],
     "executionType": "Workflow",
     "readyForPiP": false,
-    "startsInPiP": false
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": false
   },
   "designOptions": {
     "projectProfile": "Developement",

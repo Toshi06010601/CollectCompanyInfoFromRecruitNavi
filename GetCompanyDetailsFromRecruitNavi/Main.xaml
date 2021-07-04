@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_userMailAddress="nkmr104@outlook.com" this:Main.in_str_keyword="不動産" this:Main.in_str_searchArea="群馬" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uセ行="clr-namespace:UiPathTeam_Excel_Activities.セル.行列;assembly=UiPathTeam.Excel.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_userMailAddress="nkmr104@outlook.com" this:Main.in_str_keyword="自動車学校" this:Main.in_str_searchArea="東京" this:Main.in_int_maxNumberOfCompanies="100" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uセ行="clr-namespace:UiPathTeam_Excel_Activities.セル.行列;assembly=UiPathTeam.Excel.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_str_userMailAddress" Type="InArgument(x:String)" />
     <x:Property Name="in_str_keyword" Type="InArgument(x:String)" />
@@ -95,7 +95,6 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPathTeam.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap:VirtualizedContainerService.HintSize="676.666666666667,933.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -246,11 +245,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[dt_ListOfCompanies]" DisplayName="Extract Structured Data 'BODY'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='PageTitle' attr='text' name2='AccessURL' attr2='href'&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='ul' idx='1' /&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='h2' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="560,106" sap2010:WorkflowViewState.IdRef="ExtractData_6" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl tag='A' class='rnn-inlineBlock rnn-pagination__button' parentclass='rnn-pagination__next' idx='1' /&gt;" SimulateClick="True">
                             <ui:ExtractData.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="29fd6718-08ae-4a8a-acf3-7b112ab58b1c" InformativeScreenshot="2c6e3b9d8d70d3ed906a860936673fc2" Selector="&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="29fd6718-08ae-4a8a-acf3-7b112ab58b1c" InformativeScreenshot="2c6e3b9d8d70d3ed906a860936673fc2" Selector="&lt;webctrl tag='BODY' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
                             </ui:ExtractData.Target>
                           </ui:ExtractData>
                           <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Open template file" sap:VirtualizedContainerService.HintSize="560,259.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="01.Config\05.Template.xlsx">
@@ -462,7 +457,7 @@
                           <InArgument x:TypeArguments="x:String">["02.Output\" + in_str_keyword + "_" + in_str_searchArea + ".xlsx"]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Create output file" sap:VirtualizedContainerService.HintSize="434,517.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" Workbook="[wb_outputfile]" WorkbookPath="[&quot;02.Output\&quot; + in_str_keyword + &quot;_&quot; + in_str_searchArea + &quot;.xlsx&quot;]">
+                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Create output file" sap:VirtualizedContainerService.HintSize="434,517.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" Workbook="[wb_outputfile]" WorkbookPath="[str_outputFilePath]">
                         <ui:ExcelApplicationScope.Body>
                           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                             <ActivityAction.Argument>
